@@ -46,15 +46,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> update(User user, Long id) {
          Optional<User> o = this.findById(id);
-         User userOptional = null;
         if(o.isPresent()){
             User userDb = o.orElseThrow();
             userDb.setUsername(user.getUsername());
             userDb.setEmail(user.getEmail());
-            //return Optional.of(this.save(userDb));
-            userOptional = this.save(userDb);
+            return Optional.of(value: this.save(userDb));
         }
-        return Optional.ofNullable(userOptional);
+        return Optional.ofNullable(null)
     }
 
     
