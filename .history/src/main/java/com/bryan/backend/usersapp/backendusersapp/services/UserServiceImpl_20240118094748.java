@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
             userDb.setUsername(user.getUsername());
             userDb.setEmail(user.getEmail());
             //return Optional.of(this.save(userDb));
-            userOptional = this.save(userDb);
+            return userOptional = this.save(userDb);
         }
         return Optional.ofNullable(userOptional);
     }
