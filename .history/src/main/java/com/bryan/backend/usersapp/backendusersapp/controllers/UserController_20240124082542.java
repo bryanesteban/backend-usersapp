@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bryan.backend.usersapp.backendusersapp.models.entities.User;
-import com.bryan.backend.usersapp.backendusersapp.models.request.userRequest;
+import com.bryan.backend.usersapp.backendusersapp.models.entities.userRequest;
 import com.bryan.backend.usersapp.backendusersapp.services.UserService;
 
 import jakarta.validation.Valid;

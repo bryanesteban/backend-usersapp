@@ -1,8 +1,6 @@
 package com.bryan.backend.usersapp.backendusersapp.controllers;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bryan.backend.usersapp.backendusersapp.models.entities.User;
-import com.bryan.backend.usersapp.backendusersapp.models.request.userRequest;
 import com.bryan.backend.usersapp.backendusersapp.services.UserService;
 
 import jakarta.validation.Valid;
@@ -52,16 +49,16 @@ public class UserController {
     @PostMapping 
     public ResponseEntity<?> create (@Valid @RequestBody User user, BindingResult result){
         if(result.hasErrors()){
-            return validation(result);
+            return validation();
         }
         User userDB = service.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(userDB);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@Valid @RequestBody userRequest user, BindingResult result, @PathVariable Long id){
+    public ResponseEntity<?> update(@Valid @RequestBody User user, BindingResult result, @PathVariable Long id){
         if(result.hasErrors()){
-            return validation(result);
+            return validation();
         }
         Optional<User> o = service.update(user, id);
         if(o.isPresent()){
@@ -78,15 +75,6 @@ public class UserController {
         return ResponseEntity.noContent().build();//204
        }
         return ResponseEntity.notFound().build();
-    }
-
-    private ResponseEntity<?> validation(BindingResult result) {
-        Map<String, String> errors = new HashMap<>();
-
-        result.getFieldErrors().forEach(err -> {
-            errors.put(err.getField(), "El campo "+err.getField()+" "+err.getDefaultMessage());
-        });        
-        return ResponseEntity.badRequest().body(errors);
     }
 
 }

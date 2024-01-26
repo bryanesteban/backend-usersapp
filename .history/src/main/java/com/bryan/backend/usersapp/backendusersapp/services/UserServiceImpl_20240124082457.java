@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bryan.backend.usersapp.backendusersapp.models.entities.User;
-import com.bryan.backend.usersapp.backendusersapp.models.request.userRequest;
+import com.bryan.backend.usersapp.backendusersapp.models.entities.userRequest;
 import com.bryan.backend.usersapp.backendusersapp.repositories.UserRepository;
 
 @Service

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bryan.backend.usersapp.backendusersapp.models.entities.User;
-import com.bryan.backend.usersapp.backendusersapp.models.request.userRequest;
+import com.bryan.backend.usersapp.backendusersapp.models.entities.userRequest;
 import com.bryan.backend.usersapp.backendusersapp.services.UserService;
 
 import jakarta.validation.Valid;
@@ -59,11 +59,11 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@Valid @RequestBody userRequest user, BindingResult result, @PathVariable Long id){
+    public ResponseEntity<?> update(@Valid @RequestBody User user, BindingResult result, @PathVariable Long id){
         if(result.hasErrors()){
             return validation(result);
         }
-        Optional<User> o = service.update(user, id);
+        Optional<User> o = service.update(userRequest, id);
         if(o.isPresent()){
             return ResponseEntity.status(HttpStatus.CREATED).body(o.orElseThrow());
         }

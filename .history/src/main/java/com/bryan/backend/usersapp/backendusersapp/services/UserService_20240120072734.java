@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.bryan.backend.usersapp.backendusersapp.models.entities.User;
-import com.bryan.backend.usersapp.backendusersapp.models.request.userRequest;
 
 public interface UserService {
 
@@ -13,7 +12,7 @@ public interface UserService {
     Optional<User> findById(Long id);
 
     User save(User user);
-    Optional<User> update(userRequest user, Long id);
+    Optional<User> update(User user, Long id);
 
     void remove(Long id);
 

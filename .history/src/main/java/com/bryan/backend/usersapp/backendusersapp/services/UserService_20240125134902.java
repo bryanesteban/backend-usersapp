@@ -3,8 +3,8 @@ package com.bryan.backend.usersapp.backendusersapp.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.bryan.backend.usersapp.backendusersapp.models.userRequest;
 import com.bryan.backend.usersapp.backendusersapp.models.entities.User;
-import com.bryan.backend.usersapp.backendusersapp.models.request.userRequest;
 
 public interface UserService {
 
