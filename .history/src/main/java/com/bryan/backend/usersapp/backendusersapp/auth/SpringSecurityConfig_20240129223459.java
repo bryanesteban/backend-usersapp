@@ -23,7 +23,7 @@ public class SpringSecurityConfig {
         .requestMatchers(HttpMethod.GET, "/users").permitAll()
         .anyRequest().authenticated()
         .and()
-        .addFilter(new JwtAuthenticationFilter(authenticationConfiguration.getAuthenticationManager()))
+        .addFilter(new JwtAuthenticationFilter(authenticationConfiguration))
         .csrf(config -> config.disable()) //se deshabilita porque la la logica va en react.
         .sessionManagement(managment -> managment.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //control de la session
         .build();

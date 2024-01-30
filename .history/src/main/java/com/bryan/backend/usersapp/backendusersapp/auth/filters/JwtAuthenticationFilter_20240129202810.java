@@ -1,8 +1,6 @@
 package com.bryan.backend.usersapp.backendusersapp.auth.filters;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -69,31 +67,15 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         String username = ((org.springframework.security.core.userdetails.User) authResult.getPrincipal()).getUsername();
         
+        
         String originalInput = "algun_token_con_alguna_frase_secreta." + username;
         String token = Base64.encodeBase64String((originalInput).getBytes());
-
-        response.addHeader("Authorization", "Bearer " + token);
        
-        Map<String, Object> body = new HashMap<>();
-        body.put("token", token);
-        body.put("message",String.format("Hola %s, has iniciado sesion con exito!", username) );
-        body.put("username", username);
-        response.getWriter().write(new ObjectMapper().writeValueAsString(body));
-        response.setStatus(200);
-        response.setContentType("application/json");
-    }   
+    }
 
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException failed) throws IOException, ServletException {
-
-        Map<String, Object> body = new HashMap<>();
-        body.put("message", "Error en la autenticacion username o password inconrrecto");
-        body.put("error", failed.getMessage());
-
-        response.getWriter().write(new ObjectMapper().writeValueAsString(body));
-        response.setStatus(401);
-        response.setContentType("application/json");
 
     }
 

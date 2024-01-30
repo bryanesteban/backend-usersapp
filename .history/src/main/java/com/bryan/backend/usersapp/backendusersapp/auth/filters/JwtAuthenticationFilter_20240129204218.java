@@ -92,8 +92,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         body.put("error", failed.getMessage());
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
-        response.setStatus(401);
-        response.setContentType("application/json");
 
     }
 
