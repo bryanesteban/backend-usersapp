@@ -9,8 +9,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-@Service
+
 public class JpaUserDetailsService implements UserDetailsService {
 
     @Override
@@ -23,13 +22,7 @@ public class JpaUserDetailsService implements UserDetailsService {
         List<GrantedAuthority> authorities= new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-        return new User(username,
-                 "12345",
-                 true,
-                 true,
-                 true,
-                 true,
-                 authorities);
+        return new User(username, "12345", true, true,true, true, authorities);
 
     }
 
