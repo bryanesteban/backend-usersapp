@@ -49,7 +49,7 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
         byte[] tokenDecodeBytes = Base64.getDecoder().decode(token);
         String tokenDecode = new String(tokenDecodeBytes);
 
-        String [] tokenArr = tokenDecode.split("\\.");
+        String [] tokenArr = tokenDecode.split(".");
         String secret = tokenArr[0];
         String username = tokenArr[1];
 
@@ -70,7 +70,6 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
             body.put("message", "El token JWT no es valido!");
 
             response.getWriter().write(new ObjectMapper().writeValueAsString(body));
-            response.setStatus(403);
             response.setContentType("application/json");
         }
         

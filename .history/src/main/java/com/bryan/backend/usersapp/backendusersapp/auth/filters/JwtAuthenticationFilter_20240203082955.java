@@ -70,7 +70,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         String username = ((org.springframework.security.core.userdetails.User) authResult.getPrincipal()).getUsername();
         
-        String originalInput = SECRET_KEY+"." + username;
+        String originalInput = SECRET_KEY + username;
         String token = Base64.encodeBase64String((originalInput).getBytes());
 
         response.addHeader(HEADER_AUTHORIZATION, PREFIX_TOKEN + token);
@@ -89,7 +89,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             AuthenticationException failed) throws IOException, ServletException {
 
         Map<String, Object> body = new HashMap<>();
-        body.put("message", "Error en la autenticacion username o password inconrrecto");
+        body.put("message", "Error en la autenticacion username o password incorrecto");
         body.put("error", failed.getMessage());
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));

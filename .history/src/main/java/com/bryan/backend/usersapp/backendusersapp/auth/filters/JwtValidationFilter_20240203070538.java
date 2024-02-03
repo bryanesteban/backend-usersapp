@@ -7,11 +7,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+import org.springframework.boot.actuate.endpoint.SecurityContext;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+import com.bryan.backend.usersapp.backendusersapp.auth.TokenJWTConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -38,7 +39,7 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
         FilterChain chain)
             throws IOException, ServletException {
 
-                String header = request.getHeader(HEADER_AUTHORIZATION);
+                String header = request.getHeader("Authorization");
 
                 if(header == null || !header.startsWith(PREFIX_TOKEN)){
                     chain.doFilter(request, response);
@@ -49,7 +50,7 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
         byte[] tokenDecodeBytes = Base64.getDecoder().decode(token);
         String tokenDecode = new String(tokenDecodeBytes);
 
-        String [] tokenArr = tokenDecode.split("\\.");
+        String [] tokenArr = tokenDecode.split(".");
         String secret = tokenArr[0];
         String username = tokenArr[1];
 
@@ -70,7 +71,6 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
             body.put("message", "El token JWT no es valido!");
 
             response.getWriter().write(new ObjectMapper().writeValueAsString(body));
-            response.setStatus(403);
             response.setContentType("application/json");
         }
         
