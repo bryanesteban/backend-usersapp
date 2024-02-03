@@ -3,17 +3,12 @@ package com.bryan.backend.usersapp.backendusersapp.auth.filters;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.boot.actuate.endpoint.SecurityContext;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -62,11 +57,7 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
             SecurityContextHolder.getContext().setAuthentication(authentication);
             chain.doFilter(request, response);
         }else{
-            Map<String, String> body = new HashMap<>();
-            body.put("message", "El token JWT no es valido!");
 
-            response.getWriter().write(new ObjectMapper().writeValueAsString(body));
-            response.setContentType("application/json");
         }
         
 
