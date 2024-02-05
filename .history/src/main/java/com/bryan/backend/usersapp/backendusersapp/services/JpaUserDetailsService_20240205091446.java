@@ -33,14 +33,13 @@ public class JpaUserDetailsService implements UserDetailsService {
         List<GrantedAuthority> authorities= new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-        return new User(
-                user.getUsername(),
-                user.getPassword(),
-                true,
-                true,
-                true,
-                true,
-                authorities);
+        return new User(username,
+                 "$2a$10$DOMDxjYyfZ/e7RcBfUpzqeaCs8pLgcizuiQWXPkU35nOhZlFcE9MS",
+                 true,
+                 true,
+                 true,
+                 true,
+                 authorities);
 
     }
 
