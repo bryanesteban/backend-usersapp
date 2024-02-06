@@ -2,6 +2,7 @@ package com.bryan.backend.usersapp.backendusersapp.auth.filters;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.JwkSetParserBuilder;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -58,7 +60,7 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
            .parseClaimsJws(token)
            .getBody();
 
-           String username = claims.getSubject();
+           Object username = claims.getSubject();
             List<GrantedAuthority> Authorities = new ArrayList<>();
             Authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
