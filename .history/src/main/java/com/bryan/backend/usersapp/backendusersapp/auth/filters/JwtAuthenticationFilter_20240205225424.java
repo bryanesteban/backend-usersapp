@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -70,12 +71,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             Authentication authResult) throws IOException, ServletException {
 
         String username = ((org.springframework.security.core.userdetails.User) authResult.getPrincipal()).getUsername();
-        //generacion de token con JWT
+        
         String token = Jwts.builder()
-                .subject(username)
+                .setSubject(username)
                 .signWith(SECRET_KEY)
-                .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 3600000))
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 36000))
                 .compact();
 
         response.addHeader(HEADER_AUTHORIZATION, PREFIX_TOKEN + token);

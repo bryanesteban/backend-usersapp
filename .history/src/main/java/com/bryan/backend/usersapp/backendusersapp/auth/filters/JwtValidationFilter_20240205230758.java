@@ -15,7 +15,6 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.Jwts;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -49,10 +48,14 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
                 }
                 
         String token = header.replace(PREFIX_TOKEN, "");
+        byte[] tokenDecodeBytes = Base64.getDecoder().decode(token);
+        String tokenDecode = new String(tokenDecodeBytes);
+
+        String [] tokenArr = tokenDecode.split("\\.");
+        String secret = tokenArr[0];
+        String username = tokenArr[1];
 
         try{
-
-            Jwts.parser().build().parseSignedContent(SECRET_KEY);
 
             List<GrantedAuthority> Authorities = new ArrayList<>();
             Authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
