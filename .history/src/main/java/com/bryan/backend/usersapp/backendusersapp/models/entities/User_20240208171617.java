@@ -13,7 +13,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -42,11 +41,9 @@ public class User {
     private String email;
 
     @ManyToMany
-    @JoinTable(
-        name = "users_roles",
-        joinColumns = @JoinColumn (name="user_id"),
-        inverseJoinColumns = @JoinColumn(name="role_id"),
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role_id"})})
+    @JoinTable(name = "users_roles",
+    joinColumns = @JoinColumn (name="user_id"),
+    inverseJoinColumns = @JoinColumn(name="role_id"))
     private List<Role> roles;
 
 
