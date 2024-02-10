@@ -50,9 +50,8 @@ public class UserServiceImpl implements UserService {
        if(o.isPresent()){
          roles.add(o.orElseThrow());
        }
-        user.setRoles(roles);
         return repository.save(user);
-    } 
+    }
 
     @Override
     @Transactional

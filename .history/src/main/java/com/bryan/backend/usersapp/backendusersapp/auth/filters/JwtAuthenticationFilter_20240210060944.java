@@ -18,7 +18,6 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -76,14 +75,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         //generacion de token con JWT
        
         Collection<? extends GrantedAuthority> roles = authResult.getAuthorities();
-
-        boolean isAdmin = roles.stream().anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"));
-        Claims claims = (Claims) Jwts.claims();
-        claims.put("authorities", new ObjectMapper().writeValueAsString(roles));
-        claims.put("isAdmin", isAdmin);
-
+       
         String token = Jwts.builder()
-                .claims(claims)
                 .subject(username)
                 .signWith(SECRET_KEY)
                 .issuedAt(new Date(System.currentTimeMillis()))

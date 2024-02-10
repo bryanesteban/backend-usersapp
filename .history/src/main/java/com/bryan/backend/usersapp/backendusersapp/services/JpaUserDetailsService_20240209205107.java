@@ -1,5 +1,6 @@
 package com.bryan.backend.usersapp.backendusersapp.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -34,6 +35,7 @@ public class JpaUserDetailsService implements UserDetailsService {
                                             stream().
                                             map(r -> new SimpleGrantedAuthority((r.getName())))
                                             .collect(Collectors.toList());
+        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
         return new User(
                 user.getUsername(),

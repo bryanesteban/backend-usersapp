@@ -1,9 +1,9 @@
 package com.bryan.backend.usersapp.backendusersapp.auth.filters;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -58,13 +58,9 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
            .parseClaimsJws(token)
            .getBody();
 
-           Object authoritiesClaims = claims.get("authorities");
            String username = claims.getSubject();
-
-
-            Collection<? extends GrantedAuthority> Authorities = Arrays
-            .asList(new ObjectMapper()
-            .readValue(authoritiesClaims.toString().getBytes(), SimpleGrantedAuthority[].class));
+            List<GrantedAuthority> Authorities = new ArrayList<>();
+            Authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                 username,
