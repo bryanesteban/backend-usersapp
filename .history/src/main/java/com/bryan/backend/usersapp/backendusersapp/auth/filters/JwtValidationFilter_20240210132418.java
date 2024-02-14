@@ -64,7 +64,7 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
 
             Collection<? extends GrantedAuthority> Authorities = Arrays
             .asList(new ObjectMapper()
-            .addMixIn(SimpleGrantedAuthority[].class, SimpleGrantedAuthority.class ) //hace que pase el dato con el nombre de la propiedad del nombre del Json en al segunda clase
+            .addMixIn(SimpleGrantedAuthority[].class, )
             .readValue(authoritiesClaims.toString().getBytes(), SimpleGrantedAuthority[].class));
 
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
