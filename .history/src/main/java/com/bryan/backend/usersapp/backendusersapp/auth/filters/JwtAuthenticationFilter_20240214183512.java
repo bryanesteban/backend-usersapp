@@ -76,12 +76,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         //generacion de token con JWT
        
         Collection<? extends GrantedAuthority> roles = authResult.getAuthorities();
-
+        System.out.println("Inicio Error");
         boolean isAdmin = roles.stream().anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"));
         Claims claims =  Jwts.claims().build();
         claims.put("authorities", new ObjectMapper().writeValueAsString(roles));
         claims.put("isAdmin", isAdmin);
-
+        System.out.println("Fin error");
         String token = Jwts.builder()
                 .claims(claims)
                 .subject(username)
