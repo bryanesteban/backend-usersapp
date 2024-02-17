@@ -74,12 +74,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         String username = ((org.springframework.security.core.userdetails.User) authResult.getPrincipal()).getUsername();
         //generacion de token con JWT
-
+        System.out.println("Punto de control 0:"+username);
         Collection<? extends GrantedAuthority> roles = authResult.getAuthorities();
-
+        System.out.println("Punto de control 1:"+roles);
         boolean isAdmin = roles.stream().anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"));
+        System.out.println("Punto de control 2"+isAdmin);
         Claims claims =  Jwts.claims().build();
-        System.out.println("Punto de control 3:"+claims+" "+SECRET_KEY);
+        System.out.println("Punto de control 3");
         claims.put("authorities", new ObjectMapper().writeValueAsString(roles));
         claims.put("isAdmin", isAdmin);
         System.out.println("Punto de control 4:"+claims);

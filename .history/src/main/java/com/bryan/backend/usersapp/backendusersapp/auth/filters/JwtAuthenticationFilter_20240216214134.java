@@ -79,7 +79,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         boolean isAdmin = roles.stream().anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"));
         Claims claims =  Jwts.claims().build();
-        System.out.println("Punto de control 3:"+claims+" "+SECRET_KEY);
+        System.out.println("Punto de control 3:"+claims);
         claims.put("authorities", new ObjectMapper().writeValueAsString(roles));
         claims.put("isAdmin", isAdmin);
         System.out.println("Punto de control 4:"+claims);
