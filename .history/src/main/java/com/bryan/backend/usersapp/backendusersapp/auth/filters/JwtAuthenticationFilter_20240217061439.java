@@ -18,6 +18,7 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ClaimsBuilder;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
@@ -79,11 +80,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         boolean isAdmin = roles.stream().anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"));
         ClaimsBuilder claims =  Jwts.claims();
+        System.out.println("Punto de control 3:"+claims+" "+SECRET_KEY);
         claims.add("authorities", new ObjectMapper().writeValueAsString(roles));
         claims.add("isAdmin", isAdmin);
-        @SuppressWarnings("unchecked") //Suprime el warning sin cheaquear
+        System.out.println("Punto de control 4:"+claims);
         String token = Jwts.builder()
-                .claims((Map<String, ?>) claims) //castea el ClaimsBuildilder para transformarlo en un tipo claims
+                .claims((Map<String, ?>) claims)
                 .subject(username)
                 .signWith(SECRET_KEY)
                 .issuedAt(new Date(System.currentTimeMillis()))
