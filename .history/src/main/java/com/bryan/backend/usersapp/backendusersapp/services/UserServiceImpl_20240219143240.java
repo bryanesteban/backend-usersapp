@@ -3,8 +3,6 @@ package com.bryan.backend.usersapp.backendusersapp.services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,20 +36,23 @@ public class UserServiceImpl implements UserService {
 
        List<User> users = (List<User>) repository.findAll();
 
-       return users
-                .stream()
-                .map(u -> DtoMapperUser.builder().setUser(u).build())
-                .collect(Collectors.toList());
+       return users.stream().map(u -> DtoMapperUser.builder().setUser(u).build());
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<UserDto> findById(Long id) {
+        Optional<User> o =  repository.findById(id);
+        if (o.isPresent()){
+            return Optional.of(
+                DtoMapperUser
+                .builder()
+                .setUser(o.orElseThrow())
+                .build()
+            );
+        }
 
-         return repository.findById(id).map( u ->  DtoMapperUser
-            .builder()
-            .setUser(u)
-            .build());
+        return Optional.empty();
     }
 
     @Override

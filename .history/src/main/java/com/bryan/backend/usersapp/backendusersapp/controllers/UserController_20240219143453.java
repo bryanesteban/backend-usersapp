@@ -55,7 +55,7 @@ public class UserController {
         if(result.hasErrors()){
             return validation(result);
         }
-        UserDto userDB = service.save(user);
+        User userDB = service.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(userDB);
     }
 
@@ -64,7 +64,7 @@ public class UserController {
         if(result.hasErrors()){
             return validation(result);
         }
-        Optional<UserDto> o = service.update(user, id);
+        Optional<User> o = service.update(user, id);
         if(o.isPresent()){
             return ResponseEntity.status(HttpStatus.CREATED).body(o.orElseThrow());
         }
@@ -73,7 +73,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> remove(@PathVariable Long id){
-       Optional<UserDto> o = service.findById(id);
+       Optional<User> o = service.findById(id);
        if(o.isPresent()){
         service.remove(id);
         return ResponseEntity.noContent().build();//204

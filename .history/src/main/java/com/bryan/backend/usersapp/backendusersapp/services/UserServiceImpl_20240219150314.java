@@ -47,11 +47,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public Optional<UserDto> findById(Long id) {
-
          return repository.findById(id).map( u ->  DtoMapperUser
-            .builder()
-            .setUser(u)
-            .build());
+         .builder()
+         .setUser(u)
+         .build());
     }
 
     @Override

@@ -47,11 +47,17 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public Optional<UserDto> findById(Long id) {
+        Optional<User> o =  repository.findById(id);
+        if (o.isPresent()){
+            return Optional.of(
+                DtoMapperUser
+                .builder()
+                .setUser(o.orElseThrow())
+                .build()
+            );
+        }
 
-         return repository.findById(id).map( u ->  DtoMapperUser
-            .builder()
-            .setUser(u)
-            .build());
+        return Optional.empty();
     }
 
     @Override
