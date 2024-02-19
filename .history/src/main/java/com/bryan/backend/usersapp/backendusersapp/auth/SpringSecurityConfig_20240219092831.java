@@ -40,6 +40,7 @@ public class SpringSecurityConfig {
             .requestMatchers(HttpMethod.POST, "/users").hasAnyRole( "ADMIN")
             .requestMatchers(HttpMethod.DELETE, "/users/{id}").hasAnyRole( "ADMIN")
             .requestMatchers(HttpMethod.PUT, "/users/{id}").hasAnyRole( "ADMIN")
+            .requestMatchers(null)
             .anyRequest().authenticated()
             .and()
             .addFilter(new JwtAuthenticationFilter(authenticationConfiguration.getAuthenticationManager()))
