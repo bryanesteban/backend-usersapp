@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -69,7 +68,7 @@ public class SpringSecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
         config.setAllowedMethods(Arrays.asList("GET","POST", "DELETE", "PUT"));
-        config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+        config.setAllowedMethods(Arrays.asList("Authorization", "Content-Type"));
         config.setAllowCredentials(true);
 
 
@@ -83,7 +82,5 @@ public class SpringSecurityConfig {
     FilterRegistrationBean<CorsFilter> corsFilter(){
         FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(
             new CorsFilter(corsConfigurationSource()));
-            bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
-            return bean;
     }
 }
