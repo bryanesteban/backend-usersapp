@@ -9,11 +9,10 @@ public class UserDto {
     public UserDto() {
     }
 
-    public UserDto(Long id, String username, String email, boolean isAdmin) {
+    public UserDto(Long id, String username, String email) {
         this.id = id;
         this.username = username;
         this.email = email;
-        this.admin = isAdmin;
     }
     
     public Long getId() {
@@ -33,14 +32,6 @@ public class UserDto {
     }
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
     }
 
 }

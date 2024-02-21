@@ -60,10 +60,10 @@ public class UserServiceImpl implements UserService {
     public UserDto save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        Optional<Role> ou = roleRepository.findByName("ROLE_USER");
+        Optional<Role> o = roleRepository.findByName("ROLE_USER");
         List<Role> roles = new ArrayList<>();
-       if(ou.isPresent()){
-         roles.add(ou.orElseThrow());
+       if(o.isPresent()){
+         roles.add(o.orElseThrow());
        }
        if(user.isAdmin()){
         Optional<Role> oa = roleRepository.findByName("ROLE_USER");
@@ -87,22 +87,6 @@ public class UserServiceImpl implements UserService {
          Optional<User> o = repository.findById(id);
          User userOptional = null;
         if(o.isPresent()){
-            Optional<Role> ou = roleRepository.findByName("ROLE_USER");
-
-            List<Role> roles = new ArrayList<>();
-           if(ou.isPresent()){
-             roles.add(ou.orElseThrow());
-           }
-           if(user.isAdmin()){
-                Optional<Role> oa = roleRepository.findByName("ROLE_USER");
-                if(oa.isPresent()){
-                    roles.add(oa.orElseThrow());
-                }
-           }
-
-
-
-           User UerDb = o.orElseThrow();
             User userDb = o.orElseThrow();
             userDb.setUsername(user.getUsername());
             userDb.setEmail(user.getEmail());

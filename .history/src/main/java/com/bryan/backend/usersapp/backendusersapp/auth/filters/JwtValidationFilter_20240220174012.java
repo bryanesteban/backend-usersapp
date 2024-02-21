@@ -87,7 +87,7 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
             response.setStatus(401);
             response.setContentType("application/json");
         }
-            
+        
 
 
     }
