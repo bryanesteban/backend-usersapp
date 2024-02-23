@@ -95,7 +95,6 @@ public class User implements IUser {
         this.email = email;
     }
 
-    @Override
     public boolean isAdmin() {
         return admin;
     }

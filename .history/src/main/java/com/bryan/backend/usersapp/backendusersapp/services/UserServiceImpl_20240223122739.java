@@ -12,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bryan.backend.usersapp.backendusersapp.models.IUser;
 import com.bryan.backend.usersapp.backendusersapp.models.DTO.UserDto;
 import com.bryan.backend.usersapp.backendusersapp.models.DTO.mapper.DtoMapperUser;
 import com.bryan.backend.usersapp.backendusersapp.models.entities.Role;
@@ -106,8 +105,6 @@ public class UserServiceImpl implements UserService {
             roles.add(oa.orElseThrow());
         }
        }
-       
-       return roles;
     }
     
 

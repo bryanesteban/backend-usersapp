@@ -106,8 +106,6 @@ public class UserServiceImpl implements UserService {
             roles.add(oa.orElseThrow());
         }
        }
-       
-       return roles;
     }
     
 

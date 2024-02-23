@@ -35,8 +35,6 @@ public class userRequest implements IUser {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    @Override
     public boolean isAdmin() {
         return admin;
     }
