@@ -103,7 +103,7 @@ public class UserServiceImpl implements UserService {
 
 
            User UerDb = o.orElseThrow();
-            UerDb.setRoles(roles);
+           userDb.setRoles(roles);
             User userDb = o.orElseThrow();
             userDb.setUsername(user.getUsername());
             userDb.setEmail(user.getEmail());
