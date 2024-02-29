@@ -3,9 +3,11 @@ package com.bryan.backend.usersapp.backendusersapp.services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.support.Repositories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,9 +60,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserDto save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles(getRoles(user));
 
-        
+        List<Role> roles = getRoles(user);
+       
+        user.setRoles(roles);
         return DtoMapperUser.builder().setUser(repository.save(user)).build();
     } 
 
@@ -77,9 +80,11 @@ public class UserServiceImpl implements UserService {
          User userOptional = null;
         if(o.isPresent()){
 
-            User UerDb = o.orElseThrow();
-            UerDb.setRoles(getRoles(user));
 
+            List<Role> roles = getRoles(user);
+
+            User UerDb = o.orElseThrow();
+            UerDb.setRoles(roles);
             User userDb = o.orElseThrow();
             userDb.setUsername(user.getUsername());
             userDb.setEmail(user.getEmail());

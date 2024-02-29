@@ -58,9 +58,9 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserDto save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles(getRoles(user));
 
-        
+       
+        user.setRoles(getRoles(user));
         return DtoMapperUser.builder().setUser(repository.save(user)).build();
     } 
 
