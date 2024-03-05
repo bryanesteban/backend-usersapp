@@ -5,10 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,9 +41,8 @@ public class UserController {
     }
 
     @GetMapping("/page/{page}")
-    public Page<UserDto> list(@PathVariable Integer page){
-        Pageable pageable = PageRequest.of(page, 10);
-        return service.findAll(pageable);
+    public List<UserDto> list(){
+        return service.findAll();
     }
 
     @GetMapping("/{id}")

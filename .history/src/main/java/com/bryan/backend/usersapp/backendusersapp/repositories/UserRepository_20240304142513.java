@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-
+import com.bryan.backend.usersapp.backendusersapp.models.DTO.UserDto;
 import com.bryan.backend.usersapp.backendusersapp.models.entities.User;
 
 public interface UserRepository 
@@ -18,5 +18,5 @@ public interface UserRepository
               @Query("select u from User u where u.username=?1")
               Optional<User> getUserByUsername(String username);
 
-              Page<User> findAll(Pageable pageable);
+              Page<UserDto> findAll(Pageable pageable);
 }

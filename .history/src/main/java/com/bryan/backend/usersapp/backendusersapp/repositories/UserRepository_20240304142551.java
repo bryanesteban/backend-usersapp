@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-
+import com.bryan.backend.usersapp.backendusersapp.models.DTO.UserDto;
 import com.bryan.backend.usersapp.backendusersapp.models.entities.User;
 
 public interface UserRepository 

@@ -48,14 +48,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public Page<UserDto> findAll(Pageable pageable) {
-       
-        Page<User> usersPage = repository.findAll(pageable);
-        return usersPage.map(u -> DtoMapperUser.builder().setUser(u).build());
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public Optional<UserDto> findById(Long id) {
 
          return repository.findById(id).map( u ->  DtoMapperUser
@@ -115,7 +107,13 @@ public class UserServiceImpl implements UserService {
        return roles;
     }
 
-    
+    @Override
+    public Page<User> findAll(Pageable pageable) {
+       
+        Page<User> usersPage = repository.findAll(pageable);
+
+        return usersPage.map(u -> DtoMapperUser.builder().setUser(u).build());
+    }
     
 
 }

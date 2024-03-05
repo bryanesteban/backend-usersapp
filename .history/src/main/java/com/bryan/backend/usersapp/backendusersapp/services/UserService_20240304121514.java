@@ -14,7 +14,7 @@ public interface UserService {
 
     List<UserDto> findAll();
 
-    Page<UserDto> findAll(Pageable pageable);
+    Page<User> findAll(Pageable pageable);
     
     Optional<UserDto> findById(Long id);
 
