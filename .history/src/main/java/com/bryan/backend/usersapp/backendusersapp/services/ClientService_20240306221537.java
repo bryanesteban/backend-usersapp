@@ -18,7 +18,7 @@ public interface ClientService {
     Optional<ClientDTO> findByLastName(String lastName);
 
     ClientDTO save(Client client);
-    Optional<ClientDTO> update(Client client, String identification);
+    Optional<Client> update(Client client, String identification);
 
     void remove(String identification);
 

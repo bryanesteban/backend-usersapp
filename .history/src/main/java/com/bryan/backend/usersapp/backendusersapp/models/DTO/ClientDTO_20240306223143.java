@@ -116,22 +116,6 @@ public class ClientDTO {
         this.email = email;
     }
 
-    public Date getDateBirthday() {
-        return dateBirthday;
-    }
-
-    public void setDateBirthday(Date dateBirthday) {
-        this.dateBirthday = dateBirthday;
-    }
-
-    public Date getDateBegin() {
-        return dateBegin;
-    }
-
-    public void setDateBegin(Date dateBegin) {
-        this.dateBegin = dateBegin;
-    }
-
     
 
     

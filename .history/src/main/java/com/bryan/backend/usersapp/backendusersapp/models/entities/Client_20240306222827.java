@@ -1,7 +1,6 @@
 package com.bryan.backend.usersapp.backendusersapp.models.entities;
 
-
-import java.util.Date;
+import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

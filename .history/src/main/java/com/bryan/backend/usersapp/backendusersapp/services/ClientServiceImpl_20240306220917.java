@@ -49,36 +49,21 @@ public class ClientServiceImpl implements ClientService {
         .build());
     }
 
-    @SuppressWarnings("null")
     @Override
     public ClientDTO save(Client client) {
         return ClientDTO.builder().setClient(clientRepository.save(client)).build();
     }
 
     @Override
-    public Optional<ClientDTO> update(Client client, String identification) {
-        Optional<Client> o = clientRepository.findByIdentification(identification);
-        Client clientOptional = null;
-
-        if(o.isPresent()){
-            Client clientDb = o.orElseThrow();
-
-            clientDb.setName(client.getName());
-            clientDb.setLastname(client.getLastname());
-            clientDb.setAddress(client.getAddress());
-            clientDb.setEmail(client.getAddress());
-            clientDb.setPhoneNumber(client.getPhoneNumber());
-            clientDb.setDateBirthday(client.getDateBirthday());
-            clientDb.setDateBegin(client.getDateBegin());
-        }
-
-        return Optional.ofNullable(ClientDTO.builder().setClient(clientOptional).build());
-
+    public Optional<Client> update(Client Client, String identification) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
     public void remove(String identification) {
-        clientRepository.deleteByIdentification(identification);
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'remove'");
     }
 
 }

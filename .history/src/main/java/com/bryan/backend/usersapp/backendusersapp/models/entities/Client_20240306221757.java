@@ -1,10 +1,5 @@
 package com.bryan.backend.usersapp.backendusersapp.models.entities;
 
-
-import java.util.Date;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -47,33 +42,11 @@ public class Client {
     @Size(max = 20)
     private String phoneNumber;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
-    @Column(name = "dateBirthday")
-    private Date dateBirthday;
-
-    @JsonFormat(pattern="yyyy-MM-dd")
-    @Column(name = "dateBegin")
-    private Date dateBegin;
 
     @Column(name = "email")
     @Size(max = 20)
     private String email;
 
-    public Date getDateBirthday() {
-        return dateBirthday;
-    }
-
-    public void setDateBirthday(Date dateBirthday) {
-        this.dateBirthday = dateBirthday;
-    }
-
-    public Date getDateBegin() {
-        return dateBegin;
-    }
-
-    public void setDateBegin(Date dateBegin) {
-        this.dateBegin = dateBegin;
-    }
 
 
     public String getEmail() {

@@ -3,7 +3,6 @@ package com.bryan.backend.usersapp.backendusersapp.models.DTO;
 import java.util.Date;
 
 import com.bryan.backend.usersapp.backendusersapp.models.entities.Client;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ClientDTO {
 
@@ -14,13 +13,7 @@ public class ClientDTO {
     private String address;
     private String phoneNumber;
     private String email;
-
-    @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateBirthday;
-
-    
-
-    @JsonFormat(pattern="yyyy-MM-dd")
     private Date dateBegin;
 
     private Client client;
@@ -42,15 +35,13 @@ public class ClientDTO {
     }
 
     public ClientDTO(String identification, String name, String lastname, String address, String phoneNumber,
-    String email, Date dateBirthday, Date dateBegin) {
-    this.identification = identification;
-    this.name = name;
-    this.lastname = lastname;
-    this.address = address;
-    this.phoneNumber = phoneNumber;
-    this.email = email;
-    this.dateBirthday = dateBirthday;
-    this.dateBegin = dateBegin;
+            String email) {
+        this.identification = identification;
+        this.name = name;
+        this.lastname = lastname;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
     }
 
     public ClientDTO build(){
@@ -63,9 +54,7 @@ public class ClientDTO {
                             ,client.getLastname()
                             ,client.getAddress()
                             ,client.getPhoneNumber()
-                            ,client.getEmail()
-                            ,client.getDateBegin()
-                            ,client.getDateBirthday());
+                            ,client.getEmail());
     }
 
     public String getIdentification() {
@@ -114,22 +103,6 @@ public class ClientDTO {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Date getDateBirthday() {
-        return dateBirthday;
-    }
-
-    public void setDateBirthday(Date dateBirthday) {
-        this.dateBirthday = dateBirthday;
-    }
-
-    public Date getDateBegin() {
-        return dateBegin;
-    }
-
-    public void setDateBegin(Date dateBegin) {
-        this.dateBegin = dateBegin;
     }
 
     

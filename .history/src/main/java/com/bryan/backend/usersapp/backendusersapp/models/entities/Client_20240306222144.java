@@ -1,7 +1,6 @@
 package com.bryan.backend.usersapp.backendusersapp.models.entities;
 
-
-import java.util.Date;
+import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -59,21 +58,6 @@ public class Client {
     @Size(max = 20)
     private String email;
 
-    public Date getDateBirthday() {
-        return dateBirthday;
-    }
-
-    public void setDateBirthday(Date dateBirthday) {
-        this.dateBirthday = dateBirthday;
-    }
-
-    public Date getDateBegin() {
-        return dateBegin;
-    }
-
-    public void setDateBegin(Date dateBegin) {
-        this.dateBegin = dateBegin;
-    }
 
 
     public String getEmail() {

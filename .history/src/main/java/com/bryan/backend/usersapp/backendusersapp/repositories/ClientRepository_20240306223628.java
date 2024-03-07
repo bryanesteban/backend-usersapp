@@ -20,7 +20,7 @@ public interface ClientRepository
 
             Optional<Client> findByLastname(String lastname);
 
-            Optional<Client> deleteByIdentification(String identification);
+            Optional<Client> dedeleteByIdentification(String identification);
 
 
             

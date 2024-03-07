@@ -8,7 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.bryan.backend.usersapp.backendusersapp.models.entities.Client;
 
-
 public interface ClientRepository
         extends CrudRepository<Client,Long> {
 
@@ -19,8 +18,6 @@ public interface ClientRepository
             Optional<Client> findByName(String name);
 
             Optional<Client> findByLastname(String lastname);
-
-            Optional<Client> deleteByIdentification(String identification);
 
 
             

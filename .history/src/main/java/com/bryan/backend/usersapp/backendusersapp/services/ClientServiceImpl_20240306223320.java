@@ -78,7 +78,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void remove(String identification) {
-        clientRepository.deleteByIdentification(identification);
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'remove'");
     }
 
 }

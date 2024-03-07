@@ -42,7 +42,7 @@ public class ClientDTO {
     }
 
     public ClientDTO(String identification, String name, String lastname, String address, String phoneNumber,
-    String email, Date dateBirthday, Date dateBegin) {
+    String email, Date dateBirthday, Date dateBegin, Client client) {
     this.identification = identification;
     this.name = name;
     this.lastname = lastname;
@@ -51,6 +51,7 @@ public class ClientDTO {
     this.email = email;
     this.dateBirthday = dateBirthday;
     this.dateBegin = dateBegin;
+    this.client = client;
     }
 
     public ClientDTO build(){
@@ -114,22 +115,6 @@ public class ClientDTO {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Date getDateBirthday() {
-        return dateBirthday;
-    }
-
-    public void setDateBirthday(Date dateBirthday) {
-        this.dateBirthday = dateBirthday;
-    }
-
-    public Date getDateBegin() {
-        return dateBegin;
-    }
-
-    public void setDateBegin(Date dateBegin) {
-        this.dateBegin = dateBegin;
     }
 
     

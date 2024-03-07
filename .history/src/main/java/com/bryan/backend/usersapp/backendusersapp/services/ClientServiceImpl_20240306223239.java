@@ -72,13 +72,12 @@ public class ClientServiceImpl implements ClientService {
             clientDb.setDateBegin(client.getDateBegin());
         }
 
-        return Optional.ofNullable(ClientDTO.builder().setClient(clientOptional).build());
-
     }
 
     @Override
     public void remove(String identification) {
-        clientRepository.deleteByIdentification(identification);
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'remove'");
     }
 
 }

@@ -56,29 +56,22 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Optional<ClientDTO> update(Client client, String identification) {
+    public Optional<Client> update(Client client, String identification) {
         Optional<Client> o = clientRepository.findByIdentification(identification);
         Client clientOptional = null;
 
         if(o.isPresent()){
             Client clientDb = o.orElseThrow();
 
-            clientDb.setName(client.getName());
-            clientDb.setLastname(client.getLastname());
-            clientDb.setAddress(client.getAddress());
-            clientDb.setEmail(client.getAddress());
-            clientDb.setPhoneNumber(client.getPhoneNumber());
-            clientDb.setDateBirthday(client.getDateBirthday());
-            clientDb.setDateBegin(client.getDateBegin());
+            clientDb.setName(o.get)
         }
-
-        return Optional.ofNullable(ClientDTO.builder().setClient(clientOptional).build());
 
     }
 
     @Override
     public void remove(String identification) {
-        clientRepository.deleteByIdentification(identification);
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'remove'");
     }
 
 }

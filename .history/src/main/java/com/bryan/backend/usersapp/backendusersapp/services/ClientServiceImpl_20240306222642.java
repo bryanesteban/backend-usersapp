@@ -68,17 +68,15 @@ public class ClientServiceImpl implements ClientService {
             clientDb.setAddress(client.getAddress());
             clientDb.setEmail(client.getAddress());
             clientDb.setPhoneNumber(client.getPhoneNumber());
-            clientDb.setDateBirthday(client.getDateBirthday());
-            clientDb.setDateBegin(client.getDateBegin());
+            clientDb.setDateBirthday(null);
         }
-
-        return Optional.ofNullable(ClientDTO.builder().setClient(clientOptional).build());
 
     }
 
     @Override
     public void remove(String identification) {
-        clientRepository.deleteByIdentification(identification);
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'remove'");
     }
 
 }

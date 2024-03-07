@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
 import com.bryan.backend.usersapp.backendusersapp.models.entities.Client;
+import java.util.List;
 
 
 public interface ClientRepository
@@ -20,7 +21,7 @@ public interface ClientRepository
 
             Optional<Client> findByLastname(String lastname);
 
-            Optional<Client> deleteByIdentification(String identification);
+            Optional<Client> dedeleteByIdentification(String identification);
 
 
             
