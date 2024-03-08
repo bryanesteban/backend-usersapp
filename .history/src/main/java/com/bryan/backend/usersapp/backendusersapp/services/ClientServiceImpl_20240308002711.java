@@ -37,12 +37,10 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Optional<ClientDTO> findByNameAndLastName(String nameClient) {
-       /*  return clientRepository.findByNameOrLastname(nameClient).map( u -> ClientDTO
+        return clientRepository.findByNameOrLastname(nameClient).map( u -> ClientDTO
         .builder()
         .setClient(u)
-        .build());*/
-
-        return null;
+        .build());
     }
 
 

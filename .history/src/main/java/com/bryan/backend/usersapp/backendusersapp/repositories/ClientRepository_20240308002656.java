@@ -18,8 +18,8 @@ public interface ClientRepository
             Optional<Client> findByIdentification(String identification);
 
             //@Query("select u from client u where u.name=?1 or u.lastname=?1")
-           // Optional<Client> getClientByNameAndLastname(String nameClient);
-            //Optional<Client> findByNameOrLastname(String nameClient);
+            //Optional<Client> getClientByNameAndLastname(String nameClient);
+            Optional<Client> findByNameOrLastname(String nameClient);
 
 
             Optional<Client> deleteByIdentification(String identification);
