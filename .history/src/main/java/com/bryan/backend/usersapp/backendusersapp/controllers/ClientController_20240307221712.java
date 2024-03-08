@@ -59,17 +59,6 @@ public class ClientController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/{nameClient}")
-    public ResponseEntity<?> showforClient(@PathVariable (name = "nameClient") String nameClient) {
-        Optional<ClientDTO> clientOptional = service.findByNameAndLastName(nameClient);
-
-        if(clientOptional.isPresent()){
-            return  ResponseEntity.ok(clientOptional.orElseThrow());
-        }
-
-        return ResponseEntity.notFound().build();
-    }
-
     @PostMapping
     public ResponseEntity<?> create (@Valid @RequestBody Client client, BindingResult  result) {
         if(result.hasErrors()){

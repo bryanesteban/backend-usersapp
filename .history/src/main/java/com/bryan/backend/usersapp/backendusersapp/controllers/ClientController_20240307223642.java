@@ -60,8 +60,8 @@ public class ClientController {
     }
 
     @GetMapping("/{nameClient}")
-    public ResponseEntity<?> showforClient(@PathVariable (name = "nameClient") String nameClient) {
-        Optional<ClientDTO> clientOptional = service.findByNameAndLastName(nameClient);
+    public ResponseEntity<?> show(@PathVariable (name = "identification") String identification) {
+        Optional<ClientDTO> clientOptional = service.findByIdentification(identification);
 
         if(clientOptional.isPresent()){
             return  ResponseEntity.ok(clientOptional.orElseThrow());

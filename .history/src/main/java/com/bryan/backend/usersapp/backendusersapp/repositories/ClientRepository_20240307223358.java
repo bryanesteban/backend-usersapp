@@ -17,7 +17,7 @@ public interface ClientRepository
 
             Optional<Client> findByIdentification(String identification);
 
-            @Query("select u from client u where u.name=?1 or u.lastname=?1")
+            @Query("select u from client u where u.name = :nameClient or u.lastname = :nameClient")
             Optional<Client> getClientByNameAndLastname(String nameClient);
 
             Optional<Client> deleteByIdentification(String identification);

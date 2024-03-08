@@ -5,13 +5,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 import com.bryan.backend.usersapp.backendusersapp.models.DTO.ClientDTO;
 import com.bryan.backend.usersapp.backendusersapp.models.entities.Client;
 import com.bryan.backend.usersapp.backendusersapp.repositories.ClientRepository;
 
-@Service
 public class ClientServiceImpl implements ClientService {
 
     @Autowired
@@ -36,8 +34,8 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Optional<ClientDTO> findByNameAndLastName(String nameClient) {
-        return clientRepository.getClientByNameAndLastname(nameClient).map( u -> ClientDTO
+    public Optional<ClientDTO> findByName(String name) {
+        return clientRepository.getClientByNameAndLastname(name).map( u -> ClientDTO
         .builder()
         .setClient(u)
         .build());
